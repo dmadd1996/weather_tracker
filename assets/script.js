@@ -6,6 +6,19 @@ var mainWind = document.getElementById('mainWind')
 var mainHumid = document.getElementById('mainHumid')
 var mainUV = document.getElementById('mainUV')
 
+var searchHistory = document.getElementById('searchHistory')
+
+function printHistory() {
+    //pull from local
+    var historyParse = JSON.parse(localStorage.getItem('history') || [])
+    console.log("hs", JSON.stringify(historyParse))
+    // var highScoresString = JSON.stringify(highScoresParse)
+  
+    for (let i = 0; i < historyParse.length; i++) {
+      searchHistory.innerHTML += `<button class = "btn btn-primary m-2 w-100" id = 'histBtn'> ${historyParse[i]} </button> <br>`;
+    }
+  }
+
 //when user types city and clicks submit
 citySubmit.addEventListener('click', function () {
     var cityName = cityInput.value
@@ -144,9 +157,29 @@ citySubmit.addEventListener('click', function () {
                     d5Temp.textContent = `${currentData.daily[5].temp.day}°F`
                     d5Wind.textContent = `${currentData.daily[5].wind_speed} MPH`
                     d5Humid.textContent = `${currentData.daily[5].humidity}%`
+
+                    //save user input to var
+                    var inputHistory = `${placeData[0].name}, ${placeData[0].state}, ${placeData[0].country}`
+                    var inputArray = JSON.parse(window.localStorage.getItem("history")) || []
+
+                    //push to an array
+                    inputArray.push(inputHistory)
+
+                    //push to local
+                    localStorage.setItem('history', JSON.stringify(inputArray))
                 });
             });
         });
     });
 
 });
+
+printHistory();
+
+var histBtn = document.getElementById('histBtn')
+
+histBtn.addEventListener('click', function (){
+    var userSelection = this.textContent
+    
+    cityInput.value = userSelection
+})
