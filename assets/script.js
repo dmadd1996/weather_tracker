@@ -15,9 +15,11 @@ function printHistory() {
     console.log("hs", JSON.stringify(historyParse))
   
     for (let i = 0; i < historyParse.length; i++) {
-      searchHistory.innerHTML += `<button class = "btn btn-primary m-2 w-100" id = 'histBtn'> ${historyParse[i]} </button> <br>`;
+      searchHistory.innerHTML += `<button class = "btn btn-success m-2 w-100 histBtn"> ${historyParse[i]} </button> <br>`;
     }
-  }
+    
+}
+
 
 //when user types city and clicks submit
 citySubmit.addEventListener('click', function () {
@@ -38,6 +40,7 @@ citySubmit.addEventListener('click', function () {
             var lon = placeData[0].lon
             console.log(`lat: ${lat}, long: ${lon}`)
             var currentAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&units=imperial&appid=2c9d646cbf2ee524b60b45419e486291`
+
 
             //response is fetched
             fetch(currentAPI).then(function (response) {
@@ -157,15 +160,9 @@ citySubmit.addEventListener('click', function () {
                     d5Temp.textContent = `${currentData.daily[5].temp.day}°F`
                     d5Wind.textContent = `${currentData.daily[5].wind_speed} MPH`
                     d5Humid.textContent = `${currentData.daily[5].humidity}%`
-
-                    //save user input to var
-                    var inputHistory = `${placeData[0].name}, ${placeData[0].state}, ${placeData[0].country}`
-                    var inputArray = JSON.parse(window.localStorage.getItem("history")) || []
-
-                    //push to an array
-                    inputArray.push(inputHistory)
-
-                    localStorage.setItem('history', JSON.stringify(inputArray))
+                    
+                    //save user input to var (see function below)
+                    saveInput(placeData[0].name, placeData[0].state, placeData[0].country)
                 });
             });
         });
@@ -173,13 +170,42 @@ citySubmit.addEventListener('click', function () {
 
 });
 
+function saveInput(name, state, country) {
+    var inputHistory = `${name}, ${state}, ${country}`
+    var inputArray = JSON.parse(window.localStorage.getItem("history")) || []
+
+    //push to an array
+    inputArray.push(inputHistory)
+
+    //take only unique entries from array
+    var uniqueHistory = [...new Set(inputArray)]
+    console.log('Unique: ', uniqueHistory)
+
+    //set unique hisory to local
+    localStorage.setItem('history', JSON.stringify(uniqueHistory))
+}
+
 printHistory();
 
-var histBtn = document.getElementById('histBtn')
+var histBtn = document.querySelectorAll('.histBtn')
 
-histBtn.addEventListener('click', function (){
-    var userSelection = this.textContent
-    
-    cityInput.value = userSelection
+console.log('QSClass', histBtn)
+
+//if user clicks on a button from history, take content and transfer it to text input value
+histBtn.forEach(function(btn){
+    btn.addEventListener('click', function (){
+        var userSelection = this.textContent
+        
+        cityInput.value = userSelection
+    })
 })
+
+// forEach alternate:
+// for (var i=0; i < QSClass.length; i++) {
+//     QSClass[i].addEventListener('click', function (){
+//         var userSelection = this.textContent
+        
+//         cityInput.value = userSelection
+//     })
+// }
 
