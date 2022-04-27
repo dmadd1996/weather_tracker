@@ -9,10 +9,10 @@ var mainUV = document.getElementById('mainUV')
 var searchHistory = document.getElementById('searchHistory')
 
 function printHistory() {
-    //pull from local
+    //pull from local and parse
     var historyParse = JSON.parse(localStorage.getItem('history') || [])
+
     console.log("hs", JSON.stringify(historyParse))
-    // var highScoresString = JSON.stringify(highScoresParse)
   
     for (let i = 0; i < historyParse.length; i++) {
       searchHistory.innerHTML += `<button class = "btn btn-primary m-2 w-100" id = 'histBtn'> ${historyParse[i]} </button> <br>`;
@@ -165,7 +165,6 @@ citySubmit.addEventListener('click', function () {
                     //push to an array
                     inputArray.push(inputHistory)
 
-                    //push to local
                     localStorage.setItem('history', JSON.stringify(inputArray))
                 });
             });
@@ -183,3 +182,4 @@ histBtn.addEventListener('click', function (){
     
     cityInput.value = userSelection
 })
+
