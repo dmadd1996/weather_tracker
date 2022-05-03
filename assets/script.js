@@ -45,7 +45,7 @@ citySubmit.addEventListener('click', function () {
             //response is fetched
             fetch(currentAPI).then(function (response) {
                 response.json().then(function (currentData) {
-                    console.log(currentData);
+                    console.log("hello: ", currentData);
 
                     //unix timestamp is converted into semantic format
                     let unixTimestamp = currentData.current.dt
