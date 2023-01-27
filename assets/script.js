@@ -57,7 +57,7 @@ citySubmit.addEventListener('click', function () {
                     let day = date.getDate();
 
                     //Place name and date are appended into the main section of the page
-                    dateHolder.innerHTML = `${placeData[0].name}, ${placeData[0].state}, ${placeData[0].country}: ${month}/${day}/${year} <img src="http://openweathermap.org/img/wn/${currentData.current.weather[0].icon}@2x.png">`
+                    dateHolder.innerHTML = `${placeData[0].name}, ${placeData[0].state}, ${placeData[0].country}: ${month}/${day}/${year} <img src="https://openweathermap.org/img/wn/${currentData.current.weather[0].icon}@2x.png">`
 
                     //Data is added to the fields
                     mainTemp.textContent = `${currentData.current.temp}°F`
@@ -88,7 +88,7 @@ citySubmit.addEventListener('click', function () {
                     let month1 = d1Date.getMonth() + 1
                     let day1 = d1Date.getDate()
 
-                    multiDate1.innerHTML = `${month1}/${day1} <img src="http://openweathermap.org/img/wn/${currentData.daily[1].weather[0].icon}@2x.png">`
+                    multiDate1.innerHTML = `${month1}/${day1} <img src="https://openweathermap.org/img/wn/${currentData.daily[1].weather[0].icon}@2x.png">`
                     d1Temp.textContent = `${currentData.daily[1].temp.day}°F`
                     d1Wind.textContent = `${currentData.daily[1].wind_speed} MPH`
                     d1Humid.textContent = `${currentData.daily[1].humidity}%`
@@ -105,7 +105,7 @@ citySubmit.addEventListener('click', function () {
                     let month2 = d2Date.getMonth() + 1
                     let day2 = d2Date.getDate()
 
-                    multiDate2.innerHTML = `${month2}/${day2} <img src="http://openweathermap.org/img/wn/${currentData.daily[2].weather[0].icon}@2x.png">`
+                    multiDate2.innerHTML = `${month2}/${day2} <img src="https://openweathermap.org/img/wn/${currentData.daily[2].weather[0].icon}@2x.png">`
                     d2Temp.textContent = `${currentData.daily[2].temp.day}°F`
                     d2Wind.textContent = `${currentData.daily[2].wind_speed} MPH`
                     d2Humid.textContent = `${currentData.daily[2].humidity}%`
@@ -122,7 +122,7 @@ citySubmit.addEventListener('click', function () {
                     let month3 = d3Date.getMonth() + 1
                     let day3 = d3Date.getDate()
 
-                    multiDate3.innerHTML = `${month3}/${day3} <img src="http://openweathermap.org/img/wn/${currentData.daily[3].weather[0].icon}@2x.png">`
+                    multiDate3.innerHTML = `${month3}/${day3} <img src="https://openweathermap.org/img/wn/${currentData.daily[3].weather[0].icon}@2x.png">`
                     d3Temp.textContent = `${currentData.daily[3].temp.day}°F`
                     d3Wind.textContent = `${currentData.daily[3].wind_speed} MPH`
                     d3Humid.textContent = `${currentData.daily[3].humidity}%`
@@ -139,7 +139,7 @@ citySubmit.addEventListener('click', function () {
                     let month4 = d4Date.getMonth() + 1
                     let day4 = d4Date.getDate()
 
-                    multiDate4.innerHTML = `${month4}/${day4} <img src="http://openweathermap.org/img/wn/${currentData.daily[4].weather[0].icon}@2x.png">`
+                    multiDate4.innerHTML = `${month4}/${day4} <img src="https://openweathermap.org/img/wn/${currentData.daily[4].weather[0].icon}@2x.png">`
                     d4Temp.textContent = `${currentData.daily[4].temp.day}°F`
                     d4Wind.textContent = `${currentData.daily[4].wind_speed} MPH`
                     d4Humid.textContent = `${currentData.daily[4].humidity}%`
@@ -156,7 +156,7 @@ citySubmit.addEventListener('click', function () {
                     let month5 = d5Date.getMonth() + 1
                     let day5 = d5Date.getDate()
 
-                    multiDate5.innerHTML = `${month5}/${day5} <img src="http://openweathermap.org/img/wn/${currentData.daily[5].weather[0].icon}@2x.png">`
+                    multiDate5.innerHTML = `${month5}/${day5} <img src="https://openweathermap.org/img/wn/${currentData.daily[5].weather[0].icon}@2x.png">`
                     d5Temp.textContent = `${currentData.daily[5].temp.day}°F`
                     d5Wind.textContent = `${currentData.daily[5].wind_speed} MPH`
                     d5Humid.textContent = `${currentData.daily[5].humidity}%`
