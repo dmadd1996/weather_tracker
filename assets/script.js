@@ -26,7 +26,7 @@ citySubmit.addEventListener('click', function () {
     var cityName = cityInput.value
 
     //city is called and returns lat/lon numbers via API
-    var cityAPI = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=2c9d646cbf2ee524b60b45419e486291`
+    var cityAPI = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=2c9d646cbf2ee524b60b45419e486291`
 
     //response is fetched
     fetch(cityAPI).then(function (response) {
